@@ -25,8 +25,7 @@ namespace StudySystem
     {
         private List<Deck> _decks = new List<Deck>();
         private StudySession _logic = new StudySession();
-        private DeckIO _IOLogic = new DeckIO();
-        //
+        private DeckIO _IOLogic = new DeckIO();//
         public MainWindow()
         {
             InitializeComponent();
