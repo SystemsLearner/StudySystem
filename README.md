@@ -5,7 +5,12 @@
   wanted (from using anki myself) that couldn't be done that way, so here I am, building it myself.
   The current V0.1, is just a concept so far, (The later added V0.1.8 has more 'filling') so the basis of what it will eventually be built on.
   Things will change over time as seen fit etc.
+  <br>
+  <h2>This part below speaks of V0.1 specifically</h2>
   For now though, everything is essentially just hard coded, easy enough to in later versions change it over to load a JSON object for the cards/decks/etc.
+  <h2>Everything seen currently, is the V0.1.8 snapshot, progress wise</h2>
+  This current version will not remain as is, this does outline the basis of what will be to come though.
+  Not to mention, there are many things planned for the future of this, which are not currently even spoke of let alone implemented.
   <br><br><br>
 </p>
 
