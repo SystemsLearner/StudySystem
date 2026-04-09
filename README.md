@@ -21,6 +21,15 @@
   <br><br><br>
 </p>
 
+<h2>Extras: MainScreen P2</h2>
+<p>
+  Speaking of the HomeScreen, this little "Create Deck (Template)" button,
+  this is temporary (Tooltip even says so).
+  The point of this button is to create a template for the Deck object for testing with and such.
+  You press the button, it generates a TemplateDeck.jcard file (The template deck) over in,
+  %appdata% (C:\Users\*User*\AppData\Roaming\StudySystem\Decks\TemplateDeck.jcard)
+</p>
+
 <h2>Settings Screen</h2>
 <p>
   <img width="1918" height="1029" alt="SettingsScreen" src="https://github.com/user-attachments/assets/29e7b795-6fb9-489e-a2b6-470171b5a65e" />
