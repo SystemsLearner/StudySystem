@@ -1,5 +1,4 @@
-## Study System
-
+<h2>Study Screen</h2>
 <p>
   Currently a huge WIP.
   The core idea around this is to basically create something similar to the app "Anki", but customizable for things I specifically 
