@@ -18,7 +18,7 @@
 <p>
   <img width="1919" height="1032" alt="MainScreen" src="https://github.com/user-attachments/assets/cc5cd2ad-8144-456d-9103-7f19aba10a92" />
 ^ This is the HomeScreen page that you load into.
-  <br><br><br>
+  <br>
 </p>
 
 <h2>Extras: MainScreen P2</h2>
@@ -28,6 +28,7 @@
   The point of this button is to create a template for the Deck object for testing with and such.
   You press the button, it generates a TemplateDeck.jcard file (The template deck) over in,
   %appdata% (C:\Users\*User*\AppData\Roaming\StudySystem\Decks\TemplateDeck.jcard)
+  <br><br><br>
 </p>
 
 <h2>Settings Screen</h2>
