@@ -1,3 +1,5 @@
+## Study System
+
 <p>
   Currently a huge WIP.
   The core idea around this is to basically create something similar to the app "Anki", but customizable for things I specifically 
@@ -8,12 +10,14 @@
   <br><br><br>
 </p>
 
+<h2>Main Screen</h2>
 <p>
   <img width="1919" height="1032" alt="MainScreen" src="https://github.com/user-attachments/assets/cc5cd2ad-8144-456d-9103-7f19aba10a92" />
 ^ This is the HomeScreen page that you load into.
   <br><br><br>
 </p>
 
+<h2>Settings Screen</h2>
 <p>
   <img width="1918" height="1029" alt="SettingsScreen" src="https://github.com/user-attachments/assets/29e7b795-6fb9-489e-a2b6-470171b5a65e" />
 ^ "SettingsScreen" - Prime example of "WIP - Work In Progress".
@@ -22,6 +26,7 @@
   <br><br><br>
 </p>
 
+<h2>Study Screen</h2>
 <p>
   <img width="1919" height="1032" alt="StudyScreen" src="https://github.com/user-attachments/assets/332a3e74-be5f-4d2e-88fb-c6ace7be7937" />
 ^ This is the "StudyScreen",
@@ -31,6 +36,7 @@
   <br><br><br>
 </p>
 
+<h2>Deck Editor</h2>
 <p>
   <img width="1919" height="1032" alt="DeckEditScreen" src="https://github.com/user-attachments/assets/ff57a5a0-c1ee-49ac-9585-62f2c00518b1" />
 ^ This is the "DeckEditScreen",
@@ -43,10 +49,7 @@
   <br><br><br>
 </p>
 
-
-
-
-
+<h2>Card View Screen</h2>
 <p>
   <img width="1919" height="1032" alt="CardScreen001" src="https://github.com/user-attachments/assets/c71b645c-1e52-420a-92c2-678fb90a92ed" />
 ^ This is the "CardScreen",
@@ -68,7 +71,7 @@
   <br><br><br>
 </p>
 
-
+<h2>Button Tool Tip Example</h2>
 <p>
   <img width="277" height="76" alt="ButtonToolTipExample" src="https://github.com/user-attachments/assets/e902800d-e3db-45fa-ba27-7ef663134314" />
   <br>
