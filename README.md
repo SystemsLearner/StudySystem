@@ -71,6 +71,7 @@
 
 <p>
   <img width="277" height="76" alt="ButtonToolTipExample" src="https://github.com/user-attachments/assets/e902800d-e3db-45fa-ba27-7ef663134314" />
+  <br>
 ^ Oh and this is just a screenshot of the "ToolTip" for this "PreviousButton", which as tooltip implies,
   does nothing currently.
   <br><br><br>
