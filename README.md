@@ -61,7 +61,8 @@
   You can see above at top left, I entered in 'sample' text,
   this is the field the user enters in, and it gets displayed real time on the right side.
   <br>
-  <h2>
+  <h2>V0.1.9 Update</h2>
+  <p>
     Updated the image to reflect the current state as of V0.1.9
     Currently added the 2 dropdown boxes at bottom left.
     They each populate correctly now. Left one gets filled with the Decks,
@@ -69,7 +70,7 @@
         These also fill the text boxes above with their card info correctly.
         The save/load/etc buttons do not work still,
         not started on Implementing them as of now.
-  </h2>
+  </p>
   <br><br><br>
 </p>
 
