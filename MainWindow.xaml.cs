@@ -25,13 +25,12 @@ namespace StudySystem
     {
         private List<Deck> _decks = new List<Deck>();
         private StudySession _logic = new StudySession();
-        private DeckIO _IOLogic = new DeckIO();//
+        private DeckIO _IOLogic = new DeckIO();
         public MainWindow()
         {
             InitializeComponent();
             LoadDecksFromDisk();
-            DeckSelection.ItemsSource = _decks;
-            DeckSelection.DisplayMemberPath = "Name";
+            EditorLoadDecksFromDisk();
         }
 
         private void ShowScreen(UIElement screen)
@@ -79,7 +78,7 @@ namespace StudySystem
             MainCardView.CardReadingText.Text = currentCard.Reading;
             MainCardView.CardAnswerText.Text = currentCard.Answer;
             MainCardView.CardPronunciationText.Text = currentCard.Pronunciation;
-            MainCardView.setAnswerVisible(false);//Toggles the AnswerText on/off
+            MainCardView.SetAnswerVisible(false);//Toggles the AnswerText on/off
             currentCard.LastResult = null;
 
             ShowAnswerButton.Visibility = Visibility.Visible;
@@ -127,7 +126,7 @@ namespace StudySystem
 
         private void ShowAnswerButton_Click(object sender, RoutedEventArgs e)
         {
-            MainCardView.setAnswerVisible(true);//Toggles the AnswerText on/off
+            MainCardView.SetAnswerVisible(true);//Toggles the AnswerText on/off
             ShowAnswerButton.Visibility = Visibility.Collapsed;
             NextButton.Visibility = Visibility.Visible;
             NextButton.IsEnabled = true;
@@ -142,7 +141,7 @@ namespace StudySystem
 
         private void BuilderButton_Click(object sender, RoutedEventArgs e)
         {
-            EditorCardView.AnswerContainer.Opacity = 1.0;
+            EditorCardView.CardAnswerText.Visibility = Visibility.Visible;
             ShowScreen(BuilderScreen);
         }
 
@@ -383,11 +382,57 @@ namespace StudySystem
             _decks = _IOLogic.LoadAllDecks();
         }
 
+        private void EditorLoadDecksFromDisk()
+        {
+            DeckComboBox.ItemsSource = _decks;
+        }
+
         private void RefreshDeckSelection()
         {
             DeckSelection.ItemsSource = null;
             DeckSelection.ItemsSource = _decks;
             DeckSelection.DisplayMemberPath = "Name";
+        }
+
+        private void DeckComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Deck selectedDeck = DeckComboBox.SelectedItem as Deck;
+
+            if (selectedDeck == null)
+            {
+                CardComboBox.ItemsSource = null;
+                return;
+            }
+
+            for (int i = 0; i < selectedDeck.Cards.Count; i++)
+            {
+                selectedDeck.Cards[i].Index = i + 1;
+            }
+
+            CardComboBox.ItemsSource = null;
+            CardComboBox.ItemsSource = selectedDeck.Cards;
+        }
+
+        private void CardComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Card selectedCard = CardComboBox.SelectedItem as Card;
+
+            if (selectedCard == null)
+            {
+                BuilderFrontTextBox.Text = "";
+                BuilderReadingTextBox.Text = "";
+                BuilderPronunciationTextBox.Text = "";
+                BuilderAnswerTextBox.Text = "";
+                RefreshBuilderPreview();
+                return;
+            }
+
+            BuilderFrontTextBox.Text = selectedCard.Front;
+            BuilderReadingTextBox.Text = selectedCard.Reading;
+            BuilderPronunciationTextBox.Text = selectedCard.Pronunciation;
+            BuilderAnswerTextBox.Text = selectedCard.Answer;
+
+            RefreshBuilderPreview();
         }
     }
 }

@@ -10,5 +10,14 @@ namespace StudySystem.Core.JCard
     {
         public string Name { get; set; }
         public List<Card> Cards { get; set; } = new List<Card>();
+        public string DisplayName
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(Name))
+                    return "[Unnamed Deck]";
+                return Name;
+            }
+        }
     }
 }

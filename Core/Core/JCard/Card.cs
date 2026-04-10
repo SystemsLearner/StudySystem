@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using static StudySystem.Core.JCard.Card;
@@ -10,7 +11,6 @@ namespace StudySystem.Core.JCard
 {
     public class Card
     {
-
         public string Front {  get; set; }
         public string Reading { get; set; }
         public string Pronunciation { get; set; }
@@ -19,6 +19,16 @@ namespace StudySystem.Core.JCard
 
         [JsonIgnore]
         public CardResult? LastResult { get; set; }
+        public int Index { get; set; }
+        public string DisplayName
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(Front))
+                    return $"[{Index}] [Empty Card]";
+                return $"[{Index}] {Front}";
+            }
+        }
 
         public enum CardResult
         {

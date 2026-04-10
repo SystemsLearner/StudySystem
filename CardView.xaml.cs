@@ -85,7 +85,7 @@ namespace StudySystem.Controls
                 typeof(string),
                 typeof(CardView),
                 new PropertyMetadata(string.Empty));
-        public void setCardValues(string front, string reading,
+        public void SetCardValues(string front, string reading,
             string answer, string pronunciation)
         {
             CardFrontText.Text = front;
@@ -94,7 +94,7 @@ namespace StudySystem.Controls
             CardPronunciationText.Text = pronunciation;
         }
 
-        public void setAnswerVisible(bool visible)
+        public void SetAnswerVisible(bool visible)
         {
             CardAnswerText.Visibility = visible
                 ? Visibility.Visible
