@@ -1,18 +1,7 @@
 ﻿using StudySystem.Core.JCard;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using StudySystem.Screens;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace StudySystem.Controls
 {
@@ -23,6 +12,14 @@ namespace StudySystem.Controls
         public CardView()
         {
             InitializeComponent();
+        }
+
+        public void UpdateCard(Card card)
+        {
+            card.Front = CardFrontText.Text;
+            card.Reading = CardReadingText.Text;
+            card.Pronunciation = CardPronunciationText.Text;
+            card.Answer = CardAnswerText.Text;
         }
 
         public string CardTitle

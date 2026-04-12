@@ -1,5 +1,6 @@
 ﻿using StudySystem.Controls;
 using System.Windows.Controls;
+using System.Collections.Generic;
 
 namespace StudySystem.Screens
 {
@@ -15,7 +16,9 @@ namespace StudySystem.Screens
         public Button EasyButtonControl => EasyButton;
         public Button ShowAnswerButtonControl => ShowAnswerButton;
         public Button NextCardButtonControl => NextCardButton;
-        public Button StudyButtonControl => StudyButton;
+        public Button BackButtonControl => BackButton;
         public CardView MainCardViewControl => MainCardView;
+        public IEnumerable<Button> DifficultyButtons =>
+            new[] { HardButton, NormalButton, EasyButton };
     }
 }

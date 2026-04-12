@@ -9,7 +9,7 @@ namespace StudySystem.Screens
         {
             InitializeComponent();
         }
-        public Button HomeButtonControl => HomeButton;
+        public Button BackButtonControl => BackButton;
         public Button SaveButtonControl => Save;
         public Button PreviousCardButtonControl => PreviousCard;
         public Button NextCardButtonControl => NextCard;
