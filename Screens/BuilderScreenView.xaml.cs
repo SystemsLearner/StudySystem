@@ -10,22 +10,18 @@ namespace StudySystem.Screens
         {
             InitializeComponent();
         }
-
         public Button HomeButtonControl => HomeButton;
         public Button SaveButtonControl => Save;
         public Button PreviousCardButtonControl => PreviousCard;
         public Button NextCardButtonControl => NextCard;
         public Button AddCardButtonControl => AddCard;
         public Button DeleteCardButtonControl => DeleteCard;
-
         public TextBox FrontTextBoxControl => BuilderFrontTextBox;
         public TextBox ReadingTextBoxControl => BuilderReadingTextBox;
         public TextBox PronunciationTextBoxControl => BuilderPronunciationTextBox;
         public TextBox AnswerTextBoxControl => BuilderAnswerTextBox;
-
         public ComboBox DeckComboBoxControl => DeckComboBox;
         public ComboBox CardComboBoxControl => CardComboBox;
-
         public CardView EditorCardViewControl => EditorCardView;
     }
 }

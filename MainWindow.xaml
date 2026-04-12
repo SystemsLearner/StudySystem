@@ -15,99 +15,10 @@
         WindowStartupLocation="CenterScreen"
         Icon="/Assets/App.ico"
         WindowState="Maximized">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/StudySystem;component/Styles/MainStyles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
     <Grid x:Name="MainGrid" Background="#202020">
 
         <!-- HomeScreen -->
-        <Grid x:Name="HomeScreen" Background="#202020" Visibility="Visible">
-            <StackPanel HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Width="700">
-                <Grid x:Name="TitleContainer">
-                    <TextBlock Text="Study System" Foreground="#C6C6C6"
-                               FontSize="80" FontFamily="Segoe UI"
-                               Margin="5,5,5,35" HorizontalAlignment="Center" >
-                        <TextBlock.Effect>
-                            <DropShadowEffect Color="#3E454B" BlurRadius="0"
-                                              ShadowDepth="1" Opacity="1" />
-                        </TextBlock.Effect>
-                    </TextBlock>
-                </Grid>
-                
-                <!-- Temp Deck Building Button -->
-                <Grid x:Name="TempDeckButton"
-                      HorizontalAlignment="Left"
-                      VerticalAlignment="Bottom">
-                    <Button Click="CreateTemplateDeck_Click"
-                            ToolTip="Temporary dev tool: creates a template deck for testing."
-                            Width="140" Height="80" FocusVisualStyle="{x:Null}">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#353535"/>
-                                <Setter Property="BorderBrush" Value="#C6C6C6"/>
-                                <Setter Property="BorderThickness" Value="1"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border x:Name="ButtonBorder"
-                                                    Background="{TemplateBinding Background}"
-                                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                                    CornerRadius="6">
-                                                <ContentPresenter HorizontalAlignment="Center"
-                                                                  VerticalAlignment="Center"/>
-                                            </Border>
-                                            <ControlTemplate.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter TargetName="ButtonBorder"
-                                                            Property="Background" Value="#3A3A3A"/>
-                                                </Trigger>
-
-                                                <Trigger Property="IsPressed" Value="True">
-                                                    <Setter TargetName="ButtonBorder"
-                                                            Property="Background" Value="#505050"/>
-                                                </Trigger>
-                                            </ControlTemplate.Triggers>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </Button.Style>
-                        <TextBlock TextAlignment="Center"
-                                   FontFamily="Segoe UI" FontSize="22"
-                                   Foreground="#C6C6C6">
-                            Create Deck
-                            <LineBreak/>
-                            (Template)
-                        </TextBlock>
-                    </Button>
-                </Grid>
-
-                <StackPanel x:Name="ButtonsContainer">
-                    <Button Content="Study" Style="{StaticResource MenuButtonStyle}"
-                            ToolTip="Brings to StudyScreen - WIP"
-                            Click="StudyButton_Click"/>
-
-                    <Button Content="Edit Deck" Style="{StaticResource MenuButtonStyle}"
-                            ToolTip="Brings to EditDeckScreen - WIP"
-                            Click="BuilderButton_Click"/>
-
-                    <Button Content="Settings" Style="{StaticResource MenuButtonStyle}"
-                            ToolTip="Brings to SettingsScreen - WIP"
-                            Click="SettingsButton_Click"/>
-
-                    <Button Content="Exit" Style="{StaticResource MenuButtonStyle}"
-                            ToolTip="Closes the program."
-                            Click="ExitButton_Click"/>
-                </StackPanel>
-            </StackPanel>
-        </Grid>
+        <screens:HomeScreenView x:Name="HomeScreen" Visibility="Visible"/>
 
         <!-- StudyScreen -->
         <Grid x:Name="StudyScreen" Background="#202020" Visibility="Collapsed">
@@ -178,10 +89,7 @@
         </Grid>
 
         <!-- BuilderScreen -->
-        <screens:BuilderScreenView x:Name="BuilderScreen"
-                                   Visibility="Collapsed">
-            
-        </screens:BuilderScreenView>
+        <screens:BuilderScreenView x:Name="BuilderScreen" Visibility="Collapsed"/>
 
         <!-- SettingsScreen -->
         <Grid x:Name="SettingsScreen" Background="#202020" Visibility="Collapsed">

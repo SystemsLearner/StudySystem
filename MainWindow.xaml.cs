@@ -18,7 +18,7 @@ namespace StudySystem
         private List<Deck> _decks = new List<Deck>();
         private StudySession _logic = new StudySession();
         private DeckIO _IOLogic = new DeckIO();
-        private List<UIElement> _screens;
+        //private List<UIElement> _screens;
         private Deck SelectedEditorDeck;
         private Card SelectedEditorCard;
         public MainWindow()
@@ -44,6 +44,12 @@ namespace StudySystem
             //BuilderScreen.NextCardButtonControl.Click += NextCard_Click;
             //BuilderScreen.AddCardButtonControl.Click += AddCard_Click;
             //BuilderScreen.DeleteCardButtonControl.Click += DeleteCard_Click;
+            HomeScreen.StudyButtonControl.Click += StudyButton_Click;
+            HomeScreen.BuilderButtonControl.Click += BuilderButton_Click;
+            HomeScreen.SettingsButtonControl.Click += SettingsButton_Click;
+            HomeScreen.ExitButtonControl.Click += ExitButton_Click;
+            HomeScreen.TemplateDeckControl.Click += CreateTemplateDeck_Click;
+
         }
 
         private void ShowScreen(UIElement screen)
@@ -437,6 +443,11 @@ namespace StudySystem
         private void BuilderFields_TextChanged(object sender, TextChangedEventArgs e)
         {
             RefreshBuilderPreview();
+        }
+
+        private void PresetButton_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO
         }
 
         private void DeckComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

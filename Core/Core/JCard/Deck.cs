@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace StudySystem.Core.JCard
     {
         public string Name { get; set; }
         public List<Card> Cards { get; set; } = new List<Card>();
+        [JsonIgnore]
         public string DisplayName
         {
             get
