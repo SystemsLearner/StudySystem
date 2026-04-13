@@ -6,14 +6,6 @@ namespace StudySystem
     {
         private void ShowScreen(UIElement screen)
         {
-
-            //HomeScreen.Visibility = Visibility.Collapsed;
-            //StudyScreen.Visibility = Visibility.Collapsed;
-            //BuilderScreen.Visibility = Visibility.Collapsed;
-            //SettingsScreen.Visibility = Visibility.Collapsed;
-            //CardScreen.Visibility = Visibility.Collapsed;
-            //screen.Visibility = Visibility.Visible;
-
             foreach (UIElement child in MainGrid.Children)
             {
                 child.Visibility = Visibility.Collapsed;

@@ -55,10 +55,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <Generator>MSBuild:Compile</Generator>
     </Compile>
-    <Compile Include="MainWindow\DataOperations.cs" />
-    <Compile Include="MainWindow\Editor.cs" />
+    <Compile Include="MainWindow\Screens\BuilderScreen.cs" />
     <Compile Include="MainWindow\Navigation.cs" />
-    <Compile Include="MainWindow\StudySession.cs" />
+    <Compile Include="MainWindow\Screens\CardScreen.cs" />
+    <Compile Include="MainWindow\Screens\HomeScreen.cs" />
+    <Compile Include="MainWindow\Screens\SettingsScreen.cs" />
+    <Compile Include="MainWindow\Screens\StudyScreen.cs" />
     <Compile Include="Screens\BuilderScreenView.xaml.cs">
       <DependentUpon>BuilderScreenView.xaml</DependentUpon>
     </Compile>
