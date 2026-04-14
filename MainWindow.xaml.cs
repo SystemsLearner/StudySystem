@@ -39,10 +39,10 @@ namespace StudySystem
 
             BuilderScreen.SaveDeckButtonControl.Click += SaveDeckButton_Click;
             BuilderScreen.BackButtonControl.Click += BackToHomeButton_Click;
-            //BuilderScreen.PreviousCardButtonControl.Click += PreviousCard_Click;
-            //BuilderScreen.NextCardButtonControl.Click += NextCard_Click;
-            //BuilderScreen.AddCardButtonControl.Click += AddCard_Click;
-            //BuilderScreen.DeleteCardButtonControl.Click += DeleteCard_Click;
+            BuilderScreen.PreviousCardButtonControl.Click += PreviousCard_Click;
+            BuilderScreen.NextCardButtonControl.Click += NextCard_Click;
+            BuilderScreen.AddCardButtonControl.Click += AddCard_Click;
+            BuilderScreen.DeleteCardButtonControl.Click += DeleteCard_Click;
 
             HomeScreen.StudyButtonControl.Click += StudyButton_Click;
             HomeScreen.BuilderButtonControl.Click += BuilderButton_Click;

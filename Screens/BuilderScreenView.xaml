@@ -93,16 +93,16 @@
                     Margin="0,0,20,0">
             <Button x:Name="PreviousCard" Content="Previous Card" Margin="0,0,20,20"
                     Style="{StaticResource MenuButtonStyle}"
-                    ToolTip="Does Nothing Currently - WIP"/>
+                    ToolTip="Selects the previous Card within the selectedDeck"/>
             <Button x:Name="NextCard" Content="Next Card" Margin="0,0,20,20"
                     Style="{StaticResource MenuButtonStyle}"
-                    ToolTip="Does Nothing Currently - WIP"/>
+                    ToolTip="Selects the next Card within the selectedDeck"/>
             <Button x:Name="AddCard" Content="Add Card" Margin="0,0,0,20"
                     Style="{StaticResource MenuButtonStyle}"
-                    ToolTip="Does Nothing Currently - WIP"/>
+                    ToolTip="Adds a new blank Card to selectedDeck after the currently selected Card."/>
             <Button x:Name="DeleteCard" Content="Remove Card" Margin="20,0,0,20"
                     Style="{StaticResource MenuButtonStyle}"
-                    ToolTip="Does Nothing Currently - WIP"/>
+                    ToolTip="Deletes selected card. Selects next Card after."/>
             <Button x:Name="SaveDeck" Content="Save Deck" Margin="20,0,0,20"
                     Style="{StaticResource MenuButtonStyle}"
                     ToolTip="Saves all Decks"/>
