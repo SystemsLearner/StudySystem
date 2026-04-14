@@ -10,6 +10,7 @@ namespace StudySystem
 {
     public partial class MainWindow : Window
     {
+        // Button Methods
         private void SaveDeckButton_Click(object sender, RoutedEventArgs e)
         {
             Deck selectedDeck = BuilderScreen.DeckComboBoxControl.SelectedItem as Deck;
@@ -22,21 +23,6 @@ namespace StudySystem
             }
             SaveDeckToFile(selectedDeck);
             MessageBox.Show("Deck saved.");
-        }
-
-        private void SaveDeckToFile(Deck deck)
-        {
-            if (deck == null)
-            {
-                MessageBox.Show("No deck selected.");
-                return;
-            }
-            string folder = _IOLogic.GetDecksFolder();
-            string fileName = deck.Name.Replace(" ", "") + ".jcard";
-            fileName = fileName.Replace("_", "");
-            string path = System.IO.Path.Combine(folder, fileName);
-            _IOLogic.WriteDeck(deck, path);
-            EditorLoadDecksIntoComboBox();
         }
 
         private void ImportDeckButton_Click(object sender, RoutedEventArgs e)
@@ -80,69 +66,6 @@ namespace StudySystem
             RefreshEditorDeckSelection();
         }
 
-        private void ImportDecksButton_Click(object sender, RoutedEventArgs e)
-        {
-            var dialog = new OpenFileDialog
-            {
-                Filter = "JCard Files (*.jcard)|*.jcard",
-                Multiselect = true
-            };
-
-            if (dialog.ShowDialog() != true)
-            {
-                return;
-            }
-
-            string destFolder = _IOLogic.GetDecksFolder();
-
-            foreach (string sourcePath in dialog.FileNames)
-            {
-                string fileName = System.IO.Path.GetFileName(sourcePath);
-                string destPath = System.IO.Path.Combine(destFolder, fileName);
-
-                File.Copy(sourcePath, destPath, true);
-            }
-            MessageBox.Show("Deck(s) imported successfully.");
-            LoadDecksFromDisk();
-            RefreshEditorDeckSelection();
-        }
-
-        private void EditorLoadDecksIntoComboBox()
-        {
-            BuilderScreen.DeckComboBoxControl.ItemsSource = MainDecks;
-        }
-
-        private void RefreshEditorDeckSelection()
-        {
-            BuilderScreen.DeckComboBoxControl.ItemsSource = null;
-            BuilderScreen.DeckComboBoxControl.ItemsSource = MainDecks;
-            BuilderScreen.DeckComboBoxControl.DisplayMemberPath = "DisplayName";
-        }
-
-        private void SaveAllDecksButton_Click(object sender, RoutedEventArgs e)
-        {
-            _IOLogic.SaveAllDecks(MainDecks);
-        }
-
-        private void UpdateEditorCard()
-        {
-            SelectedEditorCard = BuilderScreen.CardComboBoxControl.SelectedItem as Card;
-            if (SelectedEditorCard != null)
-            {
-                BuilderScreen.EditorCardViewControl.UpdateCard(SelectedEditorCard);
-            }
-        }
-        private void RefreshBuilderPreview()
-        {
-            BuilderScreen.EditorCardViewControl.SetCard(new Card
-            {
-                Front = BuilderScreen.FrontTextBoxControl.Text,
-                Reading = BuilderScreen.ReadingTextBoxControl.Text,
-                Pronunciation = BuilderScreen.PronunciationTextBoxControl.Text,
-                Answer = BuilderScreen.AnswerTextBoxControl.Text
-            });
-        }
-
         private void BuilderFields_TextChanged(object sender, TextChangedEventArgs e)
         {
             RefreshBuilderPreview();
@@ -174,20 +97,52 @@ namespace StudySystem
             RefreshBuilderPreview();
         }
 
-        private void DeckComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        // Non-Button Methods
+        private void RefreshBuilderPreview()
         {
-            Deck selectedDeck = BuilderScreen.DeckComboBoxControl.SelectedItem as Deck;
-            if (selectedDeck == null)
+            BuilderScreen.EditorCardViewControl.SetCard(new Card
             {
-                BuilderScreen.CardComboBoxControl.ItemsSource = null;
+                Front = BuilderScreen.FrontTextBoxControl.Text,
+                Reading = BuilderScreen.ReadingTextBoxControl.Text,
+                Pronunciation = BuilderScreen.PronunciationTextBoxControl.Text,
+                Answer = BuilderScreen.AnswerTextBoxControl.Text
+            });
+        }
+
+        private void RefreshEditorDeckSelection()
+        {
+            BuilderScreen.DeckComboBoxControl.ItemsSource = null;
+            BuilderScreen.DeckComboBoxControl.ItemsSource = MainDecks;
+            BuilderScreen.DeckComboBoxControl.DisplayMemberPath = "DisplayName";
+        }
+
+        private void UpdateEditorCard()
+        {
+            SelectedEditorCard = BuilderScreen.CardComboBoxControl.SelectedItem as Card;
+            if (SelectedEditorCard != null)
+            {
+                BuilderScreen.EditorCardViewControl.UpdateCard(SelectedEditorCard);
+            }
+        }
+
+        private void EditorLoadDecksIntoComboBox()
+        {
+            BuilderScreen.DeckComboBoxControl.ItemsSource = MainDecks;
+        }
+
+        private void SaveDeckToFile(Deck deck)
+        {
+            if (deck == null)
+            {
+                MessageBox.Show("No deck selected.");
                 return;
             }
-            for (int i = 0; i < selectedDeck.Cards.Count; i++)
-            {
-                selectedDeck.Cards[i].Index = i + 1;
-            }
-            BuilderScreen.CardComboBoxControl.ItemsSource = null;
-            BuilderScreen.CardComboBoxControl.ItemsSource = selectedDeck.Cards;
+            string folder = _IOLogic.GetDecksFolder();
+            string fileName = deck.Name.Replace(" ", "") + ".jcard";
+            fileName = fileName.Replace("_", "");
+            string path = System.IO.Path.Combine(folder, fileName);
+            _IOLogic.WriteDeck(deck, path);
+            EditorLoadDecksIntoComboBox();
         }
     }
 }

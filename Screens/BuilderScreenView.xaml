@@ -105,7 +105,7 @@
                     ToolTip="Does Nothing Currently - WIP"/>
             <Button x:Name="SaveDeck" Content="Save Deck" Margin="20,0,0,20"
                     Style="{StaticResource MenuButtonStyle}"
-                    ToolTip="Does Nothing Currently - WIP"/>
+                    ToolTip="Saves all Decks"/>
         </StackPanel>
 
         <!-- ComboBoxes -->
