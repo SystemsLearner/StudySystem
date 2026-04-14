@@ -12,8 +12,8 @@ namespace StudySystem
 {
     public partial class MainWindow : Window
     {
-        private List<Deck> _decks = new List<Deck>();
-        private StudySession _logic = new StudySession();
+        private List<Deck> MainDecks = new List<Deck>();
+        private StudySession StudyDeck = new StudySession();
         private DeckIO _IOLogic = new DeckIO();
         //private List<UIElement> _screens;
         private Deck SelectedEditorDeck;
@@ -25,7 +25,7 @@ namespace StudySystem
             LoadDecksFromDisk();
             EditorLoadDecksIntoComboBox();
 
-            StudyScreen.DeckSelectionComboBoxControl.ItemsSource = _decks;
+            StudyScreen.DeckSelectionComboBoxControl.ItemsSource = MainDecks;
             StudyScreen.DeckSelectionComboBoxControl.DisplayMemberPath = "Name";
 
             BuilderScreen.FrontTextBoxControl.TextChanged += BuilderFields_TextChanged;
@@ -37,7 +37,7 @@ namespace StudySystem
             BuilderScreen.CardComboBoxControl.SelectionChanged += BuilderCardComboBox_SelectionChanged;
             StudyScreen.DeckSelectionComboBoxControl.SelectionChanged += StudyDeckComboBox_SelectionChanged;
 
-            BuilderScreen.SaveButtonControl.Click += SaveDeckButton_Click;
+            BuilderScreen.SaveDeckButtonControl.Click += SaveDeckButton_Click;
             BuilderScreen.BackButtonControl.Click += BackToHomeButton_Click;
             //BuilderScreen.PreviousCardButtonControl.Click += PreviousCard_Click;
             //BuilderScreen.NextCardButtonControl.Click += NextCard_Click;
@@ -75,31 +75,5 @@ namespace StudySystem
         //        CardScreen
         //    };
         //}
-
-        private void PresetButton_Click(object sender, RoutedEventArgs e)
-        {
-            //TODO
-        }
-
-        private void DeckComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Deck selectedDeck = BuilderScreen.DeckComboBoxControl.SelectedItem as Deck;
-            if (selectedDeck == null)
-            {
-                BuilderScreen.CardComboBoxControl.ItemsSource = null;
-                return;
-            }
-            for (int i = 0; i < selectedDeck.Cards.Count; i++)
-            {
-                selectedDeck.Cards[i].Index = i + 1;
-            }
-            BuilderScreen.CardComboBoxControl.ItemsSource = null;
-            BuilderScreen.CardComboBoxControl.ItemsSource = selectedDeck.Cards;
-        }
-
-        private void StudyDeckComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Deck selectedDeck = StudyScreen.DeckSelectionComboBoxControl.SelectedItem as Deck;
-        }
     }
 }

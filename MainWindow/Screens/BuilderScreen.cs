@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using StudySystem.Controls;
 using StudySystem.Core.JCard;
 using System;
 using System.IO;
@@ -13,22 +14,29 @@ namespace StudySystem
         {
             Deck selectedDeck = BuilderScreen.DeckComboBoxControl.SelectedItem as Deck;
             SelectedEditorDeck = selectedDeck;
-            SaveCard();
+            UpdateEditorCard();
             if (selectedDeck == null || selectedDeck.Cards.Count == 0)
             {
                 MessageBox.Show("No deck selected.");
                 return;
             }
-            string folder = _IOLogic.GetDecksFolder();
-            string fileName;
+            SaveDeckToFile(selectedDeck);
+            MessageBox.Show("Deck saved.");
+        }
 
-            fileName = selectedDeck.Name.Replace(" ", "") + ".jcard";
+        private void SaveDeckToFile(Deck deck)
+        {
+            if (deck == null)
+            {
+                MessageBox.Show("No deck selected.");
+                return;
+            }
+            string folder = _IOLogic.GetDecksFolder();
+            string fileName = deck.Name.Replace(" ", "") + ".jcard";
             fileName = fileName.Replace("_", "");
             string path = System.IO.Path.Combine(folder, fileName);
-
-            _IOLogic.WriteDeck(selectedDeck, path);
+            _IOLogic.WriteDeck(deck, path);
             EditorLoadDecksIntoComboBox();
-            MessageBox.Show("Deck saved.");
         }
 
         private void ImportDeckButton_Click(object sender, RoutedEventArgs e)
@@ -101,22 +109,22 @@ namespace StudySystem
 
         private void EditorLoadDecksIntoComboBox()
         {
-            BuilderScreen.DeckComboBoxControl.ItemsSource = _decks;
+            BuilderScreen.DeckComboBoxControl.ItemsSource = MainDecks;
         }
 
         private void RefreshEditorDeckSelection()
         {
             BuilderScreen.DeckComboBoxControl.ItemsSource = null;
-            BuilderScreen.DeckComboBoxControl.ItemsSource = _decks;
+            BuilderScreen.DeckComboBoxControl.ItemsSource = MainDecks;
             BuilderScreen.DeckComboBoxControl.DisplayMemberPath = "DisplayName";
         }
 
         private void SaveAllDecksButton_Click(object sender, RoutedEventArgs e)
         {
-            _IOLogic.SaveAllDecks(_decks);
+            _IOLogic.SaveAllDecks(MainDecks);
         }
 
-        private void SaveCard()
+        private void UpdateEditorCard()
         {
             SelectedEditorCard = BuilderScreen.CardComboBoxControl.SelectedItem as Card;
             if (SelectedEditorCard != null)
@@ -124,7 +132,6 @@ namespace StudySystem
                 BuilderScreen.EditorCardViewControl.UpdateCard(SelectedEditorCard);
             }
         }
-
         private void RefreshBuilderPreview()
         {
             BuilderScreen.EditorCardViewControl.SetCard(new Card
@@ -165,6 +172,22 @@ namespace StudySystem
             BuilderScreen.PronunciationTextBoxControl.Text = card.Pronunciation ?? "";
             BuilderScreen.AnswerTextBoxControl.Text = card.Answer ?? "";
             RefreshBuilderPreview();
+        }
+
+        private void DeckComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Deck selectedDeck = BuilderScreen.DeckComboBoxControl.SelectedItem as Deck;
+            if (selectedDeck == null)
+            {
+                BuilderScreen.CardComboBoxControl.ItemsSource = null;
+                return;
+            }
+            for (int i = 0; i < selectedDeck.Cards.Count; i++)
+            {
+                selectedDeck.Cards[i].Index = i + 1;
+            }
+            BuilderScreen.CardComboBoxControl.ItemsSource = null;
+            BuilderScreen.CardComboBoxControl.ItemsSource = selectedDeck.Cards;
         }
     }
 }

@@ -89,20 +89,21 @@
         </Grid>
 
         <!-- OtherButtons -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="PreviousCard" Content="Previous" Margin="0,0,20,20"
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right"
+                    Margin="0,0,20,0">
+            <Button x:Name="PreviousCard" Content="Previous Card" Margin="0,0,20,20"
                     Style="{StaticResource MenuButtonStyle}"
                     ToolTip="Does Nothing Currently - WIP"/>
-            <Button x:Name="NextCard" Content="Next" Margin="0,0,20,20"
+            <Button x:Name="NextCard" Content="Next Card" Margin="0,0,20,20"
                     Style="{StaticResource MenuButtonStyle}"
                     ToolTip="Does Nothing Currently - WIP"/>
-            <Button x:Name="AddCard" Content="Add" Margin="0,0,0,20"
+            <Button x:Name="AddCard" Content="Add Card" Margin="0,0,0,20"
                     Style="{StaticResource MenuButtonStyle}"
                     ToolTip="Does Nothing Currently - WIP"/>
-            <Button x:Name="DeleteCard" Content="Remove" Margin="20,0,0,20"
+            <Button x:Name="DeleteCard" Content="Remove Card" Margin="20,0,0,20"
                     Style="{StaticResource MenuButtonStyle}"
                     ToolTip="Does Nothing Currently - WIP"/>
-            <Button x:Name="Save" Content="Save" Margin="20,0,0,20"
+            <Button x:Name="SaveDeck" Content="Save Deck" Margin="20,0,0,20"
                     Style="{StaticResource MenuButtonStyle}"
                     ToolTip="Does Nothing Currently - WIP"/>
         </StackPanel>

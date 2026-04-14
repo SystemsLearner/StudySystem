@@ -11,7 +11,7 @@ namespace StudySystem
         private void UpdateCardScreen()
         {
 
-            Card currentCard = _logic.CurrentCard;
+            Card currentCard = StudyDeck.CurrentCard;
             if (currentCard == null) { return; }
 
             CardScreen.MainCardViewControl.SetCard(currentCard);
@@ -56,13 +56,13 @@ namespace StudySystem
 
         private void NextCardButton_Click(object sender, RoutedEventArgs e)
         {
-            _logic.NextCard();
+            StudyDeck.NextCard();
             UpdateCardScreen();
         }
 
         private void HandleDifficultySelection(Card.CardResult result, Button button)
         {
-            bool selected = _logic.ToggleResult(result);
+            bool selected = StudyDeck.ToggleResult(result);
 
             // --- State: No difficulty selected ---
             if (!selected)
