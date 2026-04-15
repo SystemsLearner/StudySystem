@@ -13,66 +13,54 @@
     <!-- BuilderScreen -->
     <Grid Margin="0,0,0,0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/> <!-- Title -->
+            <RowDefinition Height="Auto"/> <!-- Builder/Preview -->
+            <RowDefinition Height="*"/> <!--  -->
+            <RowDefinition Height="Auto"/> <!-- Back Button -->
+            <RowDefinition Height="Auto"/> <!-- ComboBoxes + Other Buttons -->
+            <RowDefinition Height="Auto"/> <!--  -->
         </Grid.RowDefinitions>
 
         <!-- Title -->
-        <Grid Grid.Row="0">
-            <TextBlock Text="Card Editor" Foreground="#C6C6C6"/>
+        <Grid Grid.Row="0" Margin="20,5,0,10">
+            <TextBlock Text="Card Editor" Foreground="#C6C6C6" HorizontalAlignment="Left"
+                       FontSize="18"/>
         </Grid>
 
         <!-- Card Builder -->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Margin="20,0,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="350"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Inputs -->
-            <Grid Grid.Column="0" Margin="20">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Text="Front" Foreground="#C6C6C6" Grid.Row="0"
-                           Height="40" FontSize="24" HorizontalAlignment="Center"
-                           Margin="0,0,0,4" Padding="8,5"/>
-                <TextBox x:Name="BuilderFrontTextBox" Grid.Row="1" Margin="0,0,0,10"
-                         AcceptsReturn="True" TextWrapping="Wrap"
-                         Height="44" Width="200" FontSize="20" Padding="8,4"/>
-                <TextBlock Text="Reading" Foreground="#C6C6C6" Grid.Row="2"
-                           Height="40" FontSize="24" HorizontalAlignment="Center"
-                           Margin="0,0,0,4" Padding="8,5"/>
-                <TextBox x:Name="BuilderReadingTextBox" Grid.Row="3" Margin="0,0,0,10"
-                         AcceptsReturn="True" TextWrapping="Wrap"
-                         Height="44" Width="200" FontSize="20" Padding="8,4"/>
-                <TextBlock Text="Pronunciation" Foreground="#C6C6C6" Grid.Row="4"
-                           Height="40" FontSize="24" HorizontalAlignment="Center"
-                           Margin="0,0,0,4" Padding="8,5"/>
-                <TextBox x:Name="BuilderPronunciationTextBox" Grid.Row="5" Margin="0,0,0,10"
-                         AcceptsReturn="True" TextWrapping="Wrap"
-                         Height="44" Width="200" FontSize="20" Padding="8,4"/>
-                <TextBlock Text="Answer" Foreground="#C6C6C6" Grid.Row="6"
-                           Height="40" FontSize="24" HorizontalAlignment="Center"
-                           Margin="0,0,0,4" Padding="8,5"/>
-                <TextBox x:Name="BuilderAnswerTextBox" Grid.Row="7"
-                         AcceptsReturn="True" TextWrapping="Wrap"
-                         Height="44" Width="200" FontSize="20" Padding="8,4"/>
+            <!-- Text Fields -->
+            <Grid>
+                <Border BorderBrush="#C6C6C6" BorderThickness="2" CornerRadius="16"
+                        MaxHeight="520" MaxWidth="300">
+                    <Grid Grid.RowSpan="5" VerticalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                        </Grid.ColumnDefinitions>
+                        <controls:BuilderPanel x:Name="FrontField" LabelText="Front" Grid.Row="0" Grid.Column="0"/>
+                        <controls:BuilderPanel x:Name="ReadingField" LabelText="Reading" Grid.Row="1" Grid.Column="0"/>
+                        <controls:BuilderPanel x:Name="ExtrasField" LabelText="Extras" Grid.Row="2" Grid.Column="0"/>
+                        <controls:BuilderPanel x:Name="PronunciationField" LabelText="Pronunciation" Grid.Row="3" Grid.Column="0"/>
+                        <controls:BuilderPanel x:Name="AnswerField" LabelText="Answer" Grid.Row="4" Grid.Column="0"/>
+                    </Grid>
+                </Border>
             </Grid>
+        </Grid>
 
-            <!-- Preview -->
+        <!-- Preview -->
+        <Grid Grid.Row="1" Margin="0,0,20,0">
             <Grid Grid.Column="1">
                 <controls:CardView x:Name="EditorCardView"
                                    HorizontalAlignment="Center"
@@ -81,36 +69,42 @@
         </Grid>
 
         <!-- BackButton -->
-        <Grid Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom"
-              Margin="20,0,0,0">
-            <Button x:Name="BackButton" Content="Home" Margin="0,0,60,20"
+        <Grid Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+              Margin="20,20,0,0">
+            <Button x:Name="BackButton" Content="Home" Margin="0,0,60,10"
                     Style="{StaticResource MenuButtonStyle}"
                     ToolTip="Brings to HomeScreen atm, not true back - WIP"/>
         </Grid>
 
         <!-- OtherButtons -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right"
-                    Margin="0,0,20,0">
-            <Button x:Name="PreviousCard" Content="Previous Card" Margin="0,0,20,20"
+        <StackPanel Grid.Row="4" Orientation="Horizontal"
+                    HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20">
+            <Button x:Name="PreviousCard" Content="Previous Card" Margin="0,0,60,0"
                     Style="{StaticResource MenuButtonStyle}"
+                    Width="120" Height="34" FontSize="15"
                     ToolTip="Selects the previous Card within the selectedDeck"/>
-            <Button x:Name="NextCard" Content="Next Card" Margin="0,0,20,20"
+            <Button x:Name="NextCard" Content="Next Card" Margin="0,0,60,0"
                     Style="{StaticResource MenuButtonStyle}"
+                    Width="120" Height="34" FontSize="15"
                     ToolTip="Selects the next Card within the selectedDeck"/>
-            <Button x:Name="AddCard" Content="Add Card" Margin="0,0,0,20"
+            <Button x:Name="AddCard" Content="Add Card" Margin="0,0,0,0"
                     Style="{StaticResource MenuButtonStyle}"
+                    Width="120" Height="34" FontSize="15"
                     ToolTip="Adds a new blank Card to selectedDeck after the currently selected Card."/>
-            <Button x:Name="DeleteCard" Content="Remove Card" Margin="20,0,0,20"
+            <Button x:Name="DeleteCard" Content="Remove Card" Margin="60,0,0,0"
                     Style="{StaticResource MenuButtonStyle}"
+                    Width="120" Height="34" FontSize="15"
                     ToolTip="Deletes selected card. Selects next Card after."/>
-            <Button x:Name="SaveDeck" Content="Save Deck" Margin="20,0,0,20"
+            <Button x:Name="SaveDeck" Content="Save Deck" Margin="60,0,0,0"
                     Style="{StaticResource MenuButtonStyle}"
+                    Width="120" Height="34" FontSize="15"
                     ToolTip="Saves all Decks"/>
         </StackPanel>
 
         <!-- ComboBoxes -->
-        <StackPanel Grid.Row="3" Orientation="Horizontal"
-                    HorizontalAlignment="Left" Margin="20,0,0,20">
+        <StackPanel Grid.Row="4" Orientation="Horizontal"
+                    HorizontalAlignment="Left" Margin="20,0,0,20"
+                    VerticalAlignment="Bottom">
             <StackPanel>
                 <TextBlock Text="Decks" Margin="0,0,0,5"
                            Foreground="#C6C6C6" FontSize="12"/>

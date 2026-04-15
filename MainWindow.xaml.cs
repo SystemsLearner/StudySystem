@@ -25,13 +25,14 @@ namespace StudySystem
             LoadDecksFromDisk();
             EditorLoadDecksIntoComboBox();
 
+            BuilderScreen.FrontFieldControl.InputTextBoxControl.TextChanged += BuilderFields_TextChanged;
+            BuilderScreen.ReadingFieldControl.InputTextBoxControl.TextChanged += BuilderFields_TextChanged;
+            BuilderScreen.ExtrasFieldControl.InputTextBoxControl.TextChanged += BuilderFields_TextChanged;
+            BuilderScreen.PronunciationFieldControl.InputTextBoxControl.TextChanged += BuilderFields_TextChanged;
+            BuilderScreen.AnswerFieldControl.InputTextBoxControl.TextChanged += BuilderFields_TextChanged;
+
             StudyScreen.DeckSelectionComboBoxControl.ItemsSource = MainDecks;
             StudyScreen.DeckSelectionComboBoxControl.DisplayMemberPath = "Name";
-
-            BuilderScreen.FrontTextBoxControl.TextChanged += BuilderFields_TextChanged;
-            BuilderScreen.ReadingTextBoxControl.TextChanged += BuilderFields_TextChanged;
-            BuilderScreen.PronunciationTextBoxControl.TextChanged += BuilderFields_TextChanged;
-            BuilderScreen.AnswerTextBoxControl.TextChanged += BuilderFields_TextChanged;
 
             BuilderScreen.DeckComboBoxControl.SelectionChanged += BuilderDeckComboBox_SelectionChanged;
             BuilderScreen.CardComboBoxControl.SelectionChanged += BuilderCardComboBox_SelectionChanged;

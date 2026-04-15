@@ -10,6 +10,7 @@ namespace StudySystem.Core
     {
         /*-- Furigana --*/
         public bool ShowReadingByDefault { get; set; } = true;
+        public bool ShowExtrasByDefault { get; set; } = true;
         public bool AutoAdvanceAfterAnswer { get; set; } = false;
         public bool AutoPlayAudio { get; set; } = true;
     }

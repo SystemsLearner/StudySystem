@@ -8,6 +8,44 @@ namespace StudySystem
 {
     public partial class MainWindow : Window
     {
+
+        private DeckIO deckIO = new DeckIO();
+        
+        // Button Methods
+        private void ShowAnswerButton_Click(object sender, RoutedEventArgs e)
+        {
+            CardScreen.MainCardViewControl.SetAnswerVisible(true);//Toggles the AnswerText on/off
+            CardScreen.ShowAnswerButtonControl.Visibility = Visibility.Collapsed;
+            CardScreen.NextCardButtonControl.Visibility = Visibility.Visible;
+            CardScreen.NextCardButtonControl.IsEnabled = true;
+            CardScreen.NextCardButtonControl.Opacity = 1.0;
+        }
+
+        private void NextCardButton_Click(object sender, RoutedEventArgs e)
+        {
+            StudyDeck.NextCard();
+            UpdateCardScreen();
+        }
+
+        private void HardButton_Click(object sender, RoutedEventArgs e)
+        {
+            HandleDifficultySelection(Card.CardResult.Hard, (Button)sender);
+            SaveDifficultySelection(StudyDeck.CurrentCard, Card.CardResult.Hard);
+        }
+
+        private void NormalButton_Click(object sender, RoutedEventArgs e)
+        {
+            HandleDifficultySelection(Card.CardResult.Normal, (Button)sender);
+            SaveDifficultySelection(StudyDeck.CurrentCard, Card.CardResult.Normal);
+        }
+
+        private void EasyButton_Click(object sender, RoutedEventArgs e)
+        {
+            HandleDifficultySelection(Card.CardResult.Easy, (Button)sender);
+            SaveDifficultySelection(StudyDeck.CurrentCard, Card.CardResult.Easy);
+        }
+
+        // Non-Button Methods
         private void UpdateCardScreen()
         {
 
@@ -45,19 +83,21 @@ namespace StudySystem
             }
         }
 
-        private void ShowAnswerButton_Click(object sender, RoutedEventArgs e)
+        private void SelectDifficultyButton()
         {
-            CardScreen.MainCardViewControl.SetAnswerVisible(true);//Toggles the AnswerText on/off
-            CardScreen.ShowAnswerButtonControl.Visibility = Visibility.Collapsed;
-            CardScreen.NextCardButtonControl.Visibility = Visibility.Visible;
-            CardScreen.NextCardButtonControl.IsEnabled = true;
-            CardScreen.NextCardButtonControl.Opacity = 1.0;
+            foreach (var btn in CardScreen.DifficultyButtons)
+            {
+                btn.BorderThickness = new Thickness(1);
+                btn.BorderBrush = (Brush)new BrushConverter().ConvertFromString("#555555");
+                btn.Opacity = 1.0;
+            }
         }
 
-        private void NextCardButton_Click(object sender, RoutedEventArgs e)
+        private void SaveDifficultySelection(Card card, Card.CardResult diff)
         {
-            StudyDeck.NextCard();
-            UpdateCardScreen();
+            if (card == null) { return; }
+            card.Difficulty = diff;
+            _IOLogic.SaveAllDecks(MainDecks);
         }
 
         private void HandleDifficultySelection(Card.CardResult result, Button button)
@@ -78,21 +118,6 @@ namespace StudySystem
             SelectButton(button);
         }
 
-        private void HardButton_Click(object sender, RoutedEventArgs e)
-        {
-            HandleDifficultySelection(Card.CardResult.Hard, (Button)sender);
-        }
-
-        private void NormalButton_Click(object sender, RoutedEventArgs e)
-        {
-            HandleDifficultySelection(Card.CardResult.Normal, (Button)sender);
-        }
-
-        private void EasyButton_Click(object sender, RoutedEventArgs e)
-        {
-            HandleDifficultySelection(Card.CardResult.Easy, (Button)sender);
-        }
-
         private void ResetDifficultyButtons()
         {
             CardScreen.EasyButtonControl.Opacity = 1.0;
@@ -101,16 +126,6 @@ namespace StudySystem
             foreach (Button diffButton in CardScreen.DifficultyButtons)
             {
                 diffButton.Opacity = 1.0;
-            }
-        }
-
-        private void SelectDifficultyButton()
-        {
-            foreach (var btn in CardScreen.DifficultyButtons)
-            {
-                btn.BorderThickness = new Thickness(1);
-                btn.BorderBrush = (Brush)new BrushConverter().ConvertFromString("#555555");
-                btn.Opacity = 1.0;
             }
         }
 

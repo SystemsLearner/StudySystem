@@ -31,10 +31,8 @@
                                TextOptions.TextFormattingMode="Display"
                                TextOptions.TextRenderingMode="ClearType">
                             <TextBlock.Effect>
-                                <DropShadowEffect Color="#3E454B"
-                                              BlurRadius="0"
-                                              ShadowDepth="1"
-                                              Opacity="0.85"/>
+                                <DropShadowEffect Color="#3E454B" BlurRadius="0"
+                                                  ShadowDepth="1" Opacity="0.85"/>
                             </TextBlock.Effect>
                         </TextBlock>
                     </Border>
@@ -198,5 +196,29 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    
+    <!-- BuilderTextFieldLabels -->
+    <Style x:Key="EditorLabelStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="#C6C6C6"/>
+        <Setter Property="Margin" Value="0,0,0,6"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- BuilderTextFieldBoxes -->
+    <Style x:Key="EditorTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Width" Value="220"/>
+        <Setter Property="MinHeight" Value="38"/>
+        <Setter Property="Padding" Value="8,4,8,4"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="#292929"/>
+        <Setter Property="Background" Value="#C6C6C6"/>
+        <Setter Property="BorderBrush" Value="#292929"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
 </ResourceDictionary>

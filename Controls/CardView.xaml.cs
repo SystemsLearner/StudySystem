@@ -1,7 +1,7 @@
-﻿using StudySystem.Core.JCard;
-using StudySystem.Screens;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using StudySystem.Core.JCard;
+using StudySystem.Screens;
 
 namespace StudySystem.Controls
 {
@@ -18,6 +18,7 @@ namespace StudySystem.Controls
         {
             card.Front = CardFrontText.Text;
             card.Reading = CardReadingText.Text;
+            card.Extras = CardExtrasText.Text;
             card.Pronunciation = CardPronunciationText.Text;
             card.Answer = CardAnswerText.Text;
         }
@@ -72,6 +73,7 @@ namespace StudySystem.Controls
             _currentCard = card;
             CardFrontText.Text = card.Front;
             CardReadingText.Text = card.Reading;
+            CardExtrasText.Text = card.Extras;
             CardPronunciationText.Text = card.Pronunciation;
             CardAnswerText.Text = card.Answer;
         }
@@ -83,12 +85,14 @@ namespace StudySystem.Controls
                 typeof(CardView),
                 new PropertyMetadata(string.Empty));
         public void SetCardValues(string front, string reading,
-            string answer, string pronunciation)
+            string answer, string pronunciation, string extrasText)
         {
             CardFrontText.Text = front;
             CardReadingText.Text = reading;
+            CardExtrasText.Text = extrasText;
             CardAnswerText.Text = answer;
             CardPronunciationText.Text = pronunciation;
+            CardExtrasText.Text = extrasText;
         }
 
         public void SetAnswerVisible(bool visible)

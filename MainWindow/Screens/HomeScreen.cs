@@ -16,7 +16,8 @@ namespace StudySystem
                 Front = "食べる",
                 Reading = "たべる",
                 Pronunciation = "",
-                Answer = "to eat"
+                Answer = "to eat",
+                Difficulty = Card.CardResult.Unsure
             });
 
             templateDeck.Cards.Add(new Card
@@ -24,7 +25,8 @@ namespace StudySystem
                 Front = "飲む",
                 Reading = "のむ",
                 Pronunciation = "",
-                Answer = "to drink"
+                Answer = "to drink",
+                Difficulty = Card.CardResult.Unsure
             });
 
             templateDeck.Cards.Add(new Card
@@ -32,7 +34,8 @@ namespace StudySystem
                 Front = "見る",
                 Reading = "みる",
                 Pronunciation = "",
-                Answer = "to see"
+                Answer = "to see",
+                Difficulty = Card.CardResult.Unsure
             });
 
             string folder = _IOLogic.GetDecksFolder();

@@ -13,6 +13,7 @@ namespace StudySystem.Core.JCard
     {
         public string Front {  get; set; }
         public string Reading { get; set; }
+        public string Extras { get; set; }
         public string Pronunciation { get; set; }
         public string Answer { get; set; }
         public CardResult Difficulty { get; set; }
@@ -36,7 +37,8 @@ namespace StudySystem.Core.JCard
         {
             Hard = 0,
             Normal = 1,
-            Easy = 2
+            Easy = 2,
+            Unsure = 3
         }
     }
 }

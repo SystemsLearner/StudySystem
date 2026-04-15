@@ -17,6 +17,9 @@
                     <TextBlock x:Name="CardFrontText"
                                Foreground="#C6C6C6" FontSize="56" FontFamily="Meiryo UI"
                                Margin="0,0,20,0" HorizontalAlignment="Center" Opacity="1.0"/>
+                    <TextBlock x:Name="CardExtrasText"
+                               Foreground="#C6C6C6" FontSize="46" FontFamily="Meiryo UI"
+                               Margin="20,0,0,0" HorizontalAlignment="Center" Opacity="1.0"/>
                     <TextBlock x:Name="CardReadingText"
                                Foreground="#AFAFAF" FontSize="30" FontFamily="Meiryo UI"
                                Margin="0,0,0,0" HorizontalAlignment="Center" Opacity="0.6"/>
