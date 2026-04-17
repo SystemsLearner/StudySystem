@@ -1,4 +1,5 @@
-﻿using StudySystem.Core.JCard;
+﻿using StudySystem;
+using StudySystem.Core.JCard;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,21 +39,5 @@ namespace StudySystem.Core
             if (CurrentCardIndex >= CurrentDeck.Cards.Count)
                 CurrentCardIndex = 0;
         }
-
-        public bool ToggleResult(Card.CardResult result)
-        {
-            if (CurrentCard == null)
-            {
-                return false;
-            }
-            if (CurrentCard.LastResult == result)
-            {
-                CurrentCard.LastResult = null;
-                return false;
-            }
-            CurrentCard.LastResult = result;
-            return true;
-        }
-
     }
 }

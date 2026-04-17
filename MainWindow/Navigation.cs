@@ -34,6 +34,13 @@ namespace StudySystem
         private void BackToHomeButton_Click(object sender, RoutedEventArgs e)
         {
             ShowScreen(HomeScreen);
+            totalCardsShownCount = 0;
+        }
+
+        private void BackToStudyButton_Click(object sender, RoutedEventArgs e)
+        {
+            currentCardsInDeckPosition = 1;
+            ShowScreen(StudyScreen);
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)

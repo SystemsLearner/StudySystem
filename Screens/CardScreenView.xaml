@@ -16,7 +16,13 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <controls:CardView Grid.Row="0" x:Name="MainCardView"
+        <TextBlock x:Name="CardsShownTextBlock" Text="Cards shown: 0"
+                   FontSize="24" Foreground="White" Grid.Row="0"
+                   HorizontalAlignment="Center" Padding="28"/>
+        <TextBlock x:Name="TotalCardsShown" Margin="0,0,40,0"
+                   FontSize="24" Foreground="White" Grid.Row="0"
+                   HorizontalAlignment="Right" Padding="28"/>
+            <controls:CardView Grid.Row="0" x:Name="MainCardView"
                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal"
                     HorizontalAlignment="Center" VerticalAlignment="Center"

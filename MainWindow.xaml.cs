@@ -13,10 +13,12 @@ namespace StudySystem
     public partial class MainWindow : Window
     {
         private List<Deck> MainDecks = new List<Deck>();
+        private List<Card> _studySessionCards = new List<Card>();
         private StudySession StudyDeck = new StudySession();
         private DeckIO _IOLogic = new DeckIO();
         //private List<UIElement> _screens;
         private Deck SelectedEditorDeck;
+        private int _studySessionIndex = 0;
         public MainWindow()
         {
             //HomeButtonControl
@@ -55,19 +57,7 @@ namespace StudySystem
             CardScreen.EasyButtonControl.Click += EasyButton_Click;
             CardScreen.ShowAnswerButtonControl.Click += ShowAnswerButton_Click;
             CardScreen.NextCardButtonControl.Click += NextCardButton_Click;
-            CardScreen.BackButtonControl.Click += BackToHomeButton_Click;
+            CardScreen.BackButtonControl.Click += BackToStudyButton_Click;
         }
-
-        //private void InitializeScreens()
-        //{
-        //    _screens = new List<UIElement>
-        //    {
-        //        HomeScreen,
-        //        StudyScreen,
-        //        BuilderScreen,
-        //        SettingsScreen,
-        //        CardScreen
-        //    };
-        //}
     }
 }

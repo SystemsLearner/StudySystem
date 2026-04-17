@@ -81,8 +81,7 @@ namespace StudySystem
                 Reading = "",
                 Extras = "",
                 Pronunciation = "",
-                Answer = "",
-                Difficulty = Card.CardResult.Unsure
+                Answer = ""
             };
             Card selectedCard = BuilderScreen.CardComboBoxControl.SelectedItem as Card;
             if (selectedCard == null || selectedDeck.Cards.Count == 0)
@@ -219,7 +218,6 @@ namespace StudySystem
         }
 
         // Non-Button Methods
-
         private void RefreshEditorDeckSelection()
         {
             BuilderScreen.DeckComboBoxControl.ItemsSource = null;

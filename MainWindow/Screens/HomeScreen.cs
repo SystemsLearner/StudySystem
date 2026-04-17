@@ -1,4 +1,5 @@
 ﻿using StudySystem.Core.JCard;
+using StudySystem.Screens;
 using System;
 using System.Windows;
 
@@ -16,8 +17,7 @@ namespace StudySystem
                 Front = "食べる",
                 Reading = "たべる",
                 Pronunciation = "",
-                Answer = "to eat",
-                Difficulty = Card.CardResult.Unsure
+                Answer = "to eat"
             });
 
             templateDeck.Cards.Add(new Card
@@ -25,8 +25,7 @@ namespace StudySystem
                 Front = "飲む",
                 Reading = "のむ",
                 Pronunciation = "",
-                Answer = "to drink",
-                Difficulty = Card.CardResult.Unsure
+                Answer = "to drink"
             });
 
             templateDeck.Cards.Add(new Card
@@ -34,8 +33,7 @@ namespace StudySystem
                 Front = "見る",
                 Reading = "みる",
                 Pronunciation = "",
-                Answer = "to see",
-                Difficulty = Card.CardResult.Unsure
+                Answer = "to see"
             });
 
             string folder = _IOLogic.GetDecksFolder();

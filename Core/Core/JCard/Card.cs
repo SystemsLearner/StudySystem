@@ -112,8 +112,7 @@ namespace StudySystem.Core.JCard
         {
             Hard = 0,
             Normal = 1,
-            Easy = 2,
-            Unsure = 3
+            Easy = 2
         }
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
