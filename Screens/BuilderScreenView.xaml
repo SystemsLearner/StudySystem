@@ -36,7 +36,7 @@
 
             <!-- Text Fields -->
             <Grid>
-                <Border BorderBrush="#C6C6C6" BorderThickness="3" CornerRadius="16"
+                <Border BorderBrush="#C6C6C6" BorderThickness="2" CornerRadius="26"
                         MaxHeight="580" MaxWidth="300">
                     <Grid Grid.RowSpan="5" VerticalAlignment="Center">
                         <Grid.RowDefinitions>

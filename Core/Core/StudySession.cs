@@ -26,19 +26,24 @@ namespace StudySystem.Core
 
         public void StartDeck(Deck deck)
         {
-            if (deck == null || deck.Cards.Count == 0)
-                return;
             CurrentDeck = deck;
             CurrentCardIndex = 0;
+            
         }
 
         public void NextCard()
         {
             if (CurrentDeck == null || CurrentDeck.Cards.Count == 0)
-                return;
-            CurrentCardIndex++;
+                return; CurrentCardIndex++;
             if (CurrentCardIndex >= CurrentDeck.Cards.Count)
                 CurrentCardIndex = 0;
+        }
+
+        public void FirstCard()
+        {
+            if (CurrentDeck == null || CurrentDeck.Cards.Count == 0)
+                return;
+            CurrentCardIndex = 0;
         }
     }
 }

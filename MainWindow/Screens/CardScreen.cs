@@ -15,6 +15,7 @@ namespace StudySystem
         private int currentCardsInDeckPosition = 1;
         private int currentDeckCardsCount = 0;
         private int totalCardsShownCount = 0;
+        private string diffOfCard = "";
         private bool _showSavedDifficultySelection = false;
         
         // Button Methods
@@ -40,26 +41,6 @@ namespace StudySystem
             NextCard();
         }
 
-        private void NextCard()
-        {
-            if (_studySessionCards == null || _studySessionCards.Count == 0)
-                return;
-            _showSavedDifficultySelection = false;
-            currentCardsInDeckPosition++;
-            totalCardsShownCount++;
-            Card currentCard = GetCurrentStudyCard();
-            if (currentCard != null)
-            { currentCard.LastResult = null; }
-            if (_studySessionIndex >= _studySessionCards.Count - 1)
-            {
-                StartStudySession();
-                UpdateCardScreen();
-                return;
-            }
-            _studySessionIndex++;
-            UpdateCardScreen();
-        }
-
         private void HardButton_Click(object sender, RoutedEventArgs e)
         {
             HandleDifficultySelection(Card.CardResult.Hard, (Button)sender);
@@ -82,10 +63,50 @@ namespace StudySystem
         }
 
         // Non-Button Methods
+        private void NextCard()
+        {
+            if (_studySessionCards == null || _studySessionCards.Count == 0)
+                return;
+            _showSavedDifficultySelection = false;
+            currentCardsInDeckPosition++;
+            totalCardsShownCount++;
+            Card currentCard = GetCurrentStudyCard();
+            if (currentCard != null)
+            { currentCard.LastResult = null; }
+            if (StudyDeck.CurrentCardIndex >= _studySessionCards.Count - 1)
+            {
+                StartStudySession();
+                UpdateCardScreen();
+                return;
+            }
+            StudyDeck.NextCard();
+            UpdateCardScreen();
+        }
+
         private void UpdateCardScreen()
         {
             Card currentCard = GetCurrentStudyCard();
             if (currentCard == null) { return; }
+
+            switch (currentCard.Difficulty)
+            {
+                case Card.CardResult.Hard:
+                    CardScreen.DifficultyOfCard.Foreground = (Brush)FindResource("HardBrush");
+                    CardScreen.DifficultyOfCard.Text = "Hard";
+                    break;
+                case Card.CardResult.Normal:
+                    CardScreen.DifficultyOfCard.Foreground = (Brush)FindResource("NormalBrush");
+                    CardScreen.DifficultyOfCard.Text = "Normal";
+                    break;
+                case Card.CardResult.Easy:
+                    CardScreen.DifficultyOfCard.Foreground = (Brush)FindResource("EasyBrush");
+                    CardScreen.DifficultyOfCard.Text = "Easy";
+                    break;
+                default:
+                    CardScreen.DifficultyOfCard.Foreground = (Brush)FindResource("DefaultTextBrush");
+                    CardScreen.DifficultyOfCard.Text = "None";
+                    break;
+            }
 
             CardScreen.MainCardViewControl.SetCard(currentCard);
             CardScreen.MainCardViewControl.SetAnswerVisible(false);//Toggles the AnswerText on/off
@@ -214,9 +235,9 @@ namespace StudySystem
         {
             if (_studySessionCards == null || _studySessionCards.Count == 0)
                 return null;
-            if (_studySessionIndex < 0 || _studySessionIndex >= _studySessionCards.Count)
+            if (StudyDeck.CurrentCardIndex < 0 || StudyDeck.CurrentCardIndex >= _studySessionCards.Count)
                 return null;
-            return _studySessionCards[_studySessionIndex];
+            return _studySessionCards[StudyDeck.CurrentCardIndex];
         }
 
         private void ShowAnswerButton(bool value)

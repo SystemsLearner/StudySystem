@@ -17,25 +17,28 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <TextBlock x:Name="CardsShownTextBlock" Text="Cards shown: 0"
-                   FontSize="24" Foreground="White" Grid.Row="0"
+                   FontSize="24" Foreground="{StaticResource DefaultTextBrush}" Grid.Row="0"
                    HorizontalAlignment="Center" Padding="28"/>
         <TextBlock x:Name="TotalCardsShown" Margin="0,0,40,0"
-                   FontSize="24" Foreground="White" Grid.Row="0"
+                   FontSize="24" Foreground="{StaticResource DefaultTextBrush}" Grid.Row="0"
                    HorizontalAlignment="Right" Padding="28"/>
-            <controls:CardView Grid.Row="0" x:Name="MainCardView"
+        <TextBlock x:Name="DifficultyOfCard" Margin="40,0,0,0"
+                   FontSize="24" Foreground="{StaticResource DefaultTextBrush}" Grid.Row="0"
+                   HorizontalAlignment="Left" Padding="28"/>
+        <controls:CardView Grid.Row="0" x:Name="MainCardView"
                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal"
                     HorizontalAlignment="Center" VerticalAlignment="Center"
                     Margin="0,20,25,0" Visibility="Visible" Opacity="1.0">
             <Button x:Name="HardButton" Content="H a r d"
                     Style="{StaticResource DifficultyButtonStyle}"
-                    Margin="0,0,10,0" Background="#B94A48"/>
+                    Margin="0,0,10,0" Background="{StaticResource HardBrush}"/>
             <Button x:Name="NormalButton" Content="N o r m a l"
                     Style="{StaticResource DifficultyButtonStyle}"
-                    Margin="10,0,10,0" Background="#C9A227"/>
+                    Margin="10,0,10,0" Background="{StaticResource NormalBrush}"/>
             <Button x:Name="EasyButton" Content="E a s y"
                     Style="{StaticResource DifficultyButtonStyle}"
-                    Margin="10,0,0,0" Background="#4CAF50"/>
+                    Margin="10,0,0,0" Background="{StaticResource EasyBrush}"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal"
                     HorizontalAlignment="Center" VerticalAlignment="Center"

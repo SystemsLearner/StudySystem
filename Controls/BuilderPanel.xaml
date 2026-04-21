@@ -7,17 +7,17 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
              x:Name="Root">
-    <Border>
+    <Border BorderThickness="0">
         <Grid x:Name="BuilderPanelObject" Margin="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <TextBlock Text="{Binding LabelText, ElementName=Root}" Grid.Row="0"
-                       Style="{StaticResource EditorLabelStyle}" Foreground="#AFAFAF"/>
-            <Border Grid.Row="1" CornerRadius="6"
+                       Style="{StaticResource EditorLabelStyle}" Foreground="#C6C6C6"/>
+            <Border Grid.Row="1" CornerRadius="4"
                     Background="#C6C6C6" BorderBrush="#C6C6C6" BorderThickness="1"
-                    Padding="2" Margin="0,0,0,0">
+                    Padding="1" Margin="0,0,0,0">
                 <TextBox x:Name="InputTextBox" Foreground="#C6C6C6"
                          Text="{Binding InputText, ElementName=Root, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource EditorTextBoxStyle}" BorderThickness="0"/>

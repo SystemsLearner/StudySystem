@@ -14,12 +14,10 @@ namespace StudySystem
     {
         private UserSettings GlobalSettings { get; set; } = new UserSettings();
         private List<Deck> MainDecks = new List<Deck>();
-        private List<Card> _studySessionCards = new List<Card>();
         private StudySession StudyDeck = new StudySession();
         private DeckIO _IOLogic = new DeckIO();
         //private List<UIElement> _screens;
         private Deck SelectedEditorDeck;
-        private int _studySessionIndex = 0;
         public MainWindow()
         {
             //HomeButtonControl

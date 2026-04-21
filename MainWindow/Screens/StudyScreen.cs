@@ -6,11 +6,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Linq;
 using StudySystem.Screens;
+using StudySystem.Core;
 
 namespace StudySystem
 {
     public partial class MainWindow : Window
     {
+        private List<Card> _studySessionCards;
+
         // Button Methods
         private void DeckStudyButton_Click(object sender, RoutedEventArgs e)
         {
@@ -28,27 +31,15 @@ namespace StudySystem
         private void StartStudySession()
         {
             Deck selectedDeck = StudyScreen.DeckSelectionComboBoxControl.SelectedItem as Deck;
+            if (selectedDeck == null || selectedDeck.Cards == null || selectedDeck.Cards.Count == 0) {
+                return;
+            }
             currentCardsInDeckPosition = 1;
             currentDeckCardsCount = selectedDeck.Cards.Count;
-            if (selectedDeck == null || selectedDeck.Cards == null || selectedDeck.Cards.Count == 0) { return; }
-
-            Deck studyDeck = BuildStudySession(selectedDeck);
-            StudyDeck.StartDeck(studyDeck);
-        }
-
-        private Deck BuildStudySession(Deck selectedDeck)
-        {
-            if (selectedDeck == null || selectedDeck.Cards == null)
-            {
-                _studySessionCards = new List<Card>();
-                _studySessionIndex = 0;
-                return null;
-            }
             _studySessionCards = selectedDeck.Cards
-                .OrderBy(GetStudyPriority)
+                .OrderBy(c => GetStudyPriority(c))
                 .ToList();
-            _studySessionIndex = 0;
-            return selectedDeck;
+            StudyDeck.StartDeck(selectedDeck);
         }
 
         private void RefreshStudyDeckSelection()
